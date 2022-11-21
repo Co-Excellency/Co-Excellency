@@ -25,7 +25,9 @@
             </b-navbar-item>
         </template>
 
+
     </b-navbar>
+
 </template>
 
 <script>
@@ -33,3 +35,5 @@ export default {
     name: 'Navbar',
 }
 </script>
+
+
