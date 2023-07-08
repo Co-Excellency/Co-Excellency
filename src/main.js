@@ -1,15 +1,19 @@
-import Vue from 'vue'
+import { createApp } from 'vue'
 import App from './App.vue'
-import store from './store'
-import Buefy from 'buefy'
-import 'buefy/dist/buefy.css'
-import router from './router/router.js';
+import router from './router'
+import { createPinia } from "pinia"
 
-Vue.use(Buefy)
-Vue.config.productionTip = false
+// Vuetify
+import '@mdi/font/css/materialdesignicons.css'
+import 'vuetify/styles'
+import { createVuetify } from 'vuetify'
+import * as components from 'vuetify/components'
+import * as directives from 'vuetify/directives'
 
-new Vue({
-  store,
-  router,
-  render: h => h(App)
-}).$mount('#app')
+
+const vuetify = createVuetify({
+    components,
+    directives,
+})
+
+createApp(App).use(createPinia()).use(router).use(vuetify).mount('#app')
