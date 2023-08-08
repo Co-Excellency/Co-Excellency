@@ -9,7 +9,7 @@
         </v-col>
 
         <v-col>
-          <v-btn class="font-weight-black font-weight-bold text-h5" size="large" to="/">
+          <v-btn class="font-weight-black font-weight-bold text-h5" variant="plain" size="large" to="/">
 
             {{ appTitle }}
 
@@ -18,7 +18,7 @@
         </v-col>
 
         <v-col class="text-right">
-          <v-btn v-for="item in desktop" :key="item.title" size="large" :to="item.path">
+          <v-btn v-for="item in desktop" :key="item.title" variant="plain" size="large" :to="item.path">
 
             {{ item.title }}
 
@@ -42,10 +42,38 @@
     </v-bottom-navigation>
 
 
-    <v-main>
-      <router-view></router-view>
 
-      <AdsView />
+    <v-main>
+      <v-row  v-if="display.mdAndUp">
+        <v-col cols="2">
+
+        </v-col>
+
+        <v-col>
+          <router-view></router-view>
+        </v-col>
+
+
+        <v-col cols="2">
+
+        </v-col>
+      </v-row>
+
+
+      <v-row  v-else>
+        <v-col cols="1">
+
+        </v-col>
+
+        <v-col>
+          <router-view></router-view>
+        </v-col>
+
+
+        <v-col cols="1">
+
+        </v-col>
+      </v-row>
     </v-main>
 
   </v-layout>
@@ -71,7 +99,7 @@ export default {
       desktop: [
         { title: "일정", path: "/schedule" },
         { title: "보고서", path: "/report" },
-        { title: "커뮤니티", path: "/community" },
+        { title: "설정", path: "/setting" },
       ],
 
 
@@ -79,7 +107,7 @@ export default {
         { title: "홈", path: "/", icon: "mdi-home-outline" },
         { title: "일정", path: "/schedule", icon: "mdi-school-outline" },
         { title: "보고서", path: "/report", icon: "mdi-bullhorn-outline" },
-        { title: "커뮤니티", path: "/community", icon: "mdi-tooltip-question-outline" },
+        { title: "설정", path: "/community", icon: "mdi-cog-outline" },
 
       ],
       display
